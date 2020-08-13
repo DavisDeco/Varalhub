@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  <title>Varalhub: Account</title>
+{% endblock title %}
+
+{% block content %}
+
+<!--include the header section-->
+  {% include "base/headersection.html" %}
+
+   <!-- Cart view section -->
+ <section id="cart-view">
+   <div class="container">
+     <div class="row">
+       <div class="col-md-12">
+         <div class="cart-view-area">
+         <h4>My wishlist</h4>
+           <div class="cart-view-table aa-wishlist-table">
+             <form action="">
+               <div class="table-responsive">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th></th>
+                        <th></th>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Stock Status</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><a class="remove" href="#"><fa class="fa fa-close"></fa></a></td>
+                        <td><a href="#"><img src="{% static 'img/man/product_9.jpg' %}" alt="img"></a></td>
+                        <td><a class="aa-cart-title" href="#">VAT & Taxes services</a></td>
+                        <td>$250</td>
+                        <td>In Stock</td>
+                        <td><a href="#" class="aa-add-to-cart-btn">Add To Cart</a></td>
+                      </tr>
+                      <tr>
+                        <td><a class="remove" href="#"><fa class="fa fa-close"></fa></a></td>
+                        <td><a href="#"><img src="{% static 'img/man/product_8.jpg' %}" alt="img"></a></td>
+                        <td><a class="aa-cart-title" href="#">Bills payment services</a></td>
+                        <td>$150</td>
+                        <td>In Stock</td>
+                        <td><a href="#" class="aa-add-to-cart-btn">Add To Cart</a></td>
+                      </tr>
+                      <tr>
+                        <td><a class="remove" href="#"><fa class="fa fa-close"></fa></a></td>
+                        <td><a href="#"><img src="{% static 'img/man/product_2.jpg' %}" alt="img"></a></td>
+                        <td><a class="aa-cart-title" href="#">Jafza Real Estate</a></td>
+                        <td>$50</td>
+                        <td>In Stock</td>
+                        <td><a href="#" class="aa-add-to-cart-btn">Add To Cart</a></td>
+                      </tr>                     
+                      </tbody>
+                  </table>
+                </div>
+             </form>             
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+ </section>
+ <!-- / Cart view section -->
+
+
+<!--include footer section-->
+  {% include "base/footersection.html" %}
+
+{% endblock content %}

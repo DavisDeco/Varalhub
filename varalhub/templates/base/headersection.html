@@ -1,0 +1,174 @@
+  {% load static %}
+  <!-- Start header section -->
+  <header id="aa-header">
+    <!-- start header top  -->
+    <div class="aa-header-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="aa-header-top-area">
+              <!-- start header top left -->
+              <div class="aa-header-top-left">
+
+                <!-- start cellphone -->
+                <div class="cellphone hidden-xs">
+                  <p><span class="fa fa-phone"></span>+971 4 447 2061</p>
+                </div>
+                <div class="cellphone hidden-xs">
+                  <p><strong>Setup Your Dubai & UAE Business now</strong></p>
+                </div>
+                <!-- / cellphone -->
+              </div>
+              <!-- / header top left -->
+
+              <div class="aa-header-top-right">
+                <ul class="aa-head-top-nav-right">
+                  <li><a href="{% url 'my-account' %}">My Account</a></li>
+                  <li class="hidden-xs"><a href="{% url 'wishlist' %}">Wishlist</a></li>
+                  <li class="hidden-xs"><a href="{% url 'mycart' %}">My Cart</a></li>
+                  <li class="hidden-xs"><a href="{% url 'checkout' %}">Checkout</a></li>
+                  <li><a href="" data-toggle="modal" data-target="#login-modal">Login</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- / header top  -->
+
+    <!-- start header bottom  -->
+    <div class="aa-header-bottom">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="aa-header-bottom-area">
+              <!-- logo  -->
+              <div class="aa-logo">
+                <!-- Text based logo 
+                <a href="index.html">
+                  <span class="fa fa-building-o"></span>
+                  <p>Varal<strong>Hub</strong> <span style="font-size:8px;">Setup Your Dubai & UAE Business Now</span></p>
+                </a>
+                -->
+                <!-- img based logo -->
+                <a href="index.html"><img src="{% static 'img/logo.png' %}" alt="logo img"></a> 
+              </div>
+              <!-- / logo  -->
+               <!-- cart box -->
+              <div class="aa-cartbox">
+                <a class="aa-cart-link" href="#">
+                  <span style="color: green;" class="fa fa-shopping-cart"></span>
+                  <span class="aa-cart-title">SHOPPING CART</span>
+                  <span class="aa-cart-notify">2</span>
+                </a>
+                <div class="aa-cartbox-summary">
+                  <ul>
+                    <li>
+                      <a class="aa-cartbox-img" href="#"><img src="{% static 'img/buy_const.jpg' %}" alt="img"></a>
+                      <div class="aa-cartbox-info">
+                        <h4><a href="#">Construction</a></h4>
+                        <p>1 x $250</p>
+                      </div>
+                      <a class="aa-remove-product" href="#"><span class="fa fa-times"></span></a>
+                    </li>
+                    <li>
+                      <a class="aa-cartbox-img" href="#"><img src="{% static 'img/accounts.jpg' %}" alt="img"></a>
+                      <div class="aa-cartbox-info">
+                        <h4><a href="#">VAT & Taxes</a></h4>
+                        <p>1 x $250</p>
+                      </div>
+                      <a class="aa-remove-product" href="#"><span class="fa fa-times"></span></a>
+                    </li>                    
+                    <li>
+                      <span class="aa-cartbox-total-title">
+                        Total
+                      </span>
+                      <span class="aa-cartbox-total-price">
+                        $500
+                      </span>
+                    </li>
+                  </ul>
+                  <a class="aa-cartbox-checkout aa-primary-btn" href="{% url 'checkout' %}">Checkout</a>
+                </div>
+              </div>
+              <!-- / cart box -->
+              <!-- search box -->
+              <div class="aa-search-box">
+                <form action="">
+
+                <input type="text" placeholder="Enter or choose category" list="category" />
+                <datalist id="category">
+                  <option>Free</option>
+                  <option>Appoint Auditor - free zone renewal rule or voluntarily</option>
+                  <option>Company Registration In UAE Free Zone | Swiftly &amp; Easily</option>
+                  <option>E Commerce Company License | Quickly, Simply, Easily</option>                  
+                  <option>How To Start a Retail Business Registration | Quickly &amp; Simply</option>
+                  <option>How to Start a Trading Company Registration | Quick &amp; Easy</option>
+                  <option>Manufacturing Companies License</option>
+                  <option>Media Companies in UAE License in Few Easy Steps</option>
+                  <option>Other Categories</option>
+                  <option>Providing Services</option>
+                  <option>Setting Up a Consulting Company Formation In UAE</option>
+                  <option>Shams</option>
+                  <option>UAE Local Company Registered in Mainland License Easily</option>
+                </datalist>
+                  <button type="submit"><span class="fa fa-search"></span></button>
+                </form>
+              </div>
+              <!-- / search box -->             
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- / header bottom  -->
+  </header>
+  <!-- / header section -->
+
+   <!-- menu -->
+  <section id="menu">
+    <div class="container">
+      <div class="menu-area">
+        <!-- Navbar -->
+        <div class="navbar navbar-default" role="navigation">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>          
+          </div>
+          <div class="navbar-collapse collapse">
+            <!-- Left nav -->
+            <ul class="nav navbar-nav">
+              <li><a href="{% url 'home' %}">Home</a></li>
+              <li><a href="#">Services <span class="caret"></span></a>
+                <ul class="dropdown-menu">                
+                  <li><a href="#">Appoint Auditor</a></li>
+                  <li><a href="#">UAE Company Registration</a></li>
+                  <li><a href="#">E Commerce License</a></li>
+                  <li><a href="#">Retail Business Registration</a></li>                                                
+                  <li><a href="#">Trading Company Registration</a></li>
+                  <li><a href="#">Manufacturing Companies License</a></li>
+                  <li><a href="#">UAE Media Companies License</a></li>
+                  <li><a href="#">Providing Services</a></li>
+                  <li><a href="#">Other services.. <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">Shams</a></li>
+                      <li><a href="#">UAE local mainland company registration</a></li>                                     
+                    </ul>
+                  </li>
+                </ul>
+              </li>  
+              <li><a href="#">Blog</a></li>  
+              <li><a href="#">About us</a></li> 
+              <li><a href="{% url 'contact' %}">Contact us</a></li> 
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>       
+    </div>
+  </section>
+  <!-- / menu -->
