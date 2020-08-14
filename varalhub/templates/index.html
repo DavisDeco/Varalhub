@@ -7,13 +7,6 @@
 
 {% block content %}
 
-   <!-- loader -->
-    <!--<div id="wpf-loader-two">          
-      <div class="wpf-loader-two-inner">
-        <span>Loading</span>
-      </div>
-    </div> -->
-    <!-- loader-->   
 
   <!-- SCROLL TOP BUTTON -->
     <a class="scrollToTop" href="#"><i class="fa fa-chevron-up"></i></a>
@@ -95,6 +88,9 @@
         <div class="col-md-12">
           <div class="aa-promo-area">
             <div class="row">
+            {% if user.is_authenticated%}
+            USER IS LOGGED IN
+            {% endif %}
               <!-- promo left -->
               <div class="col-md-5 no-padding">                
                 <div class="aa-promo-left">
@@ -549,7 +545,104 @@
 
   {% block javascript %}
   <!-- custom quick scrip go here -->
+  <!-- To Slider JS -->
+  <script src="{% static 'js/sequence.js' %}"></script>
+  <script src="{% static 'js/sequence-theme.modern-slide-in.js' %}"></script>  
   <script>
+
+  $(function() {
+
+    // Submit post on submit
+    $('#loginFromModal').on('submit', function(event){
+        event.preventDefault();
+        console.log("login........")
+        loginModalUser()
+        
+
+        
+    });
+    // AJAX for posting
+    function loginModalUser() {
+        var formData = $('#loginFromModal').serialize();
+        console.log(formData)
+        $.ajax({
+            url :"{% url 'accounts:login' %}", 
+            type : "POST",
+            data : formData, 
+            // handle a successful response
+            success : function(data) {
+              console.log(data)
+                // remove the value from the input
+                $('#loginFromModal')[0].reset();
+                $('#login-modal').modal('toggle');  
+
+                //redirect
+                if(data.logged){
+                  window.location.href = "{% url 'home' %}";
+                }            
+                
+            },
+            // handle a non-successful response
+            error : function(xhr,errmsg,err) {
+              console.log(xhr)
+                $('#displayLoginError').html("<span> "+xhr.responseJSON.error+" </span> "); // add the error to the dom
+            }
+        });
+    };
+
+
+    // This function gets cookie with a given name
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie != '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = jQuery.trim(cookies[i]);
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    var csrftoken = getCookie('csrftoken');
+
+    /*
+    The functions below will create a header with csrftoken
+    */
+
+    function csrfSafeMethod(method) {
+        // these HTTP methods do not require CSRF protection
+        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+    }
+    function sameOrigin(url) {
+        // test that a given url is a same-origin URL
+        // url could be relative or scheme relative or absolute
+        var host = document.location.host; // host + port
+        var protocol = document.location.protocol;
+        var sr_origin = '//' + host;
+        var origin = protocol + sr_origin;
+        // Allow absolute or scheme relative URLs to same origin
+        return (url == origin || url.slice(0, origin.length + 1) == origin + '/') ||
+            (url == sr_origin || url.slice(0, sr_origin.length + 1) == sr_origin + '/') ||
+            // or any other URL that isn't scheme relative or absolute i.e relative.
+            !(/^(\/\/|http:|https:).*/.test(url));
+    }
+
+    $.ajaxSetup({
+        beforeSend: function(xhr, settings) {
+            if (!csrfSafeMethod(settings.type) && sameOrigin(settings.url)) {
+                // Send the token to same-origin, relative URLs only.
+                // Send the token only if the method warrants CSRF protection
+                // Using the CSRFToken value acquired earlier
+                xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            }
+        }
+    });
+
+  });
   
   
   </script>

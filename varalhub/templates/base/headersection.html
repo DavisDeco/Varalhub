@@ -23,11 +23,21 @@
 
               <div class="aa-header-top-right">
                 <ul class="aa-head-top-nav-right">
-                  <li><a href="{% url 'my-account' %}">My Account</a></li>
+                  {% if user.is_authenticated %}
+                    {{ user.get_username }}
+                  {% else %}
+                    <li><a href="{% url 'accounts:register' %}">Register</a></li>
+                  {% endif %}                  
                   <li class="hidden-xs"><a href="{% url 'wishlist' %}">Wishlist</a></li>
                   <li class="hidden-xs"><a href="{% url 'mycart' %}">My Cart</a></li>
                   <li class="hidden-xs"><a href="{% url 'checkout' %}">Checkout</a></li>
-                  <li><a href="" data-toggle="modal" data-target="#login-modal">Login</a></li>
+                  
+                  {% if user.is_authenticated %}
+                    <li class="hidden-xs"><a href="{% url 'accounts:logout' %}">Checkout</a></li>
+                  {% else %}
+                    <li><a href="" data-toggle="modal" data-target="#login-modal">Login</a></li>
+                  {% endif %} 
+
                 </ul>
               </div>
             </div>
@@ -45,14 +55,8 @@
             <div class="aa-header-bottom-area">
               <!-- logo  -->
               <div class="aa-logo">
-                <!-- Text based logo 
-                <a href="index.html">
-                  <span class="fa fa-building-o"></span>
-                  <p>Varal<strong>Hub</strong> <span style="font-size:8px;">Setup Your Dubai & UAE Business Now</span></p>
-                </a>
-                -->
                 <!-- img based logo -->
-                <a href="index.html"><img src="{% static 'img/logo.png' %}" alt="logo img"></a> 
+                <a href="{% url 'home' %}"><img src="{% static 'img/logo.png' %}" alt="logo img"></a> 
               </div>
               <!-- / logo  -->
                <!-- cart box -->
